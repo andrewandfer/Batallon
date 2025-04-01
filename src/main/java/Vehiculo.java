@@ -5,11 +5,16 @@ public class Vehiculo {
     private String fechafabricacion;
     private String kilometraje;
     private EstadoOperativo estadoOperativo;
+    private String misionesCompletadas;
 
-
-    public Vehiculo(String id, String modelo, String fechafabricacion, String kilometraje) {
+    public Vehiculo(String id, String modelo, String fechafabricacion, String kilometraje, String misionesCompletadas, EstadoOperativo estadoOperativo) {
+        this.id = id;
+        this.modelo = modelo;
+        this.fechafabricacion = fechafabricacion;
+        this.kilometraje = kilometraje;
+        this.misionesCompletadas = misionesCompletadas;
+        this.estadoOperativo = estadoOperativo;
     }
-
 
     public String getId() {
         return id;
@@ -39,6 +44,10 @@ public class Vehiculo {
         return kilometraje;
     }
 
+    public void setKilometraje(String kilometraje) {
+        this.kilometraje = kilometraje;
+    }
+
     public EstadoOperativo getEstadoOperativo() {
         return estadoOperativo;
     }
@@ -47,9 +56,12 @@ public class Vehiculo {
         this.estadoOperativo = estadoOperativo;
     }
 
-    public void setKilometraje(String kilometraje) {
-        this.kilometraje = kilometraje;
+    public String getMisionesCompletadas() {
+        return misionesCompletadas;
+    }
 
+    public void setMisionesCompletadas(String misionesCompletadas) {
+        this.misionesCompletadas = misionesCompletadas;
     }
 
     @Override
@@ -59,6 +71,8 @@ public class Vehiculo {
                 ", modelo='" + modelo + '\'' +
                 ", fechafabricacion='" + fechafabricacion + '\'' +
                 ", kilometraje='" + kilometraje + '\'' +
+                ", estadoOperativo=" + estadoOperativo +
+                ", misionesCompletadas='" + misionesCompletadas + '\'' +
                 '}';
     }
 }

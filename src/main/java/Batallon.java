@@ -172,6 +172,15 @@ public class Batallon {
         return centinela;
     }
 }
+public LinkedList<Vehiculo>obtenerVehiculos50misiones(){
+    LinkedList<Vehiculo> vehiculosMisionesCompletadas = new LinkedList<>(){
+    for(VehiculoApoyo vehiculo:listaVehiculoApoyo){
+    }
+    }
+
+}
+
+
 
 
 
