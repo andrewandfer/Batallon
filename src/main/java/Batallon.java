@@ -102,11 +102,11 @@ public class Batallon {
     }
 
 
-    public void crearVehiculo(Vehiculo vehiculoAgregar) {
+    /*public void crearVehiculo(Vehiculo vehiculoAgregar) {
         if (!verificarVehiculo(vehiculoAgregar.getId())) {
             vehiculos.add(vehiculoAgregar);
         }
-    }
+    }*/
 
     public void agregarVehiculo(Vehiculo vehiculoAgregar) {
         if(buscarVehiculo(vehiculoAgregar.getId()) == null) {
@@ -146,7 +146,7 @@ public class Batallon {
 
         }
         return null;
-        //commit
+
     }
 
     public boolean actualizarVehiculo(Vehiculo vehiculoActualizar) {
@@ -235,6 +235,7 @@ public class Batallon {
 }
 
 }
+
 
 
 

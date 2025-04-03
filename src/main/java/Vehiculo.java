@@ -5,9 +5,9 @@ public class Vehiculo {
     private String fechafabricacion;
     private String kilometraje;
     private EstadoOperativo estadoOperativo;
-    private String misionesCompletadas;
+    private int misionesCompletadas;
 
-    public Vehiculo(String id, String modelo, String fechafabricacion, String kilometraje, String misionesCompletadas, EstadoOperativo estadoOperativo) {
+    public Vehiculo(String id, String modelo, String fechafabricacion, String kilometraje, int misionesCompletadas, EstadoOperativo estadoOperativo) {
         this.id = id;
         this.modelo = modelo;
         this.fechafabricacion = fechafabricacion;
@@ -56,11 +56,11 @@ public class Vehiculo {
         this.estadoOperativo = estadoOperativo;
     }
 
-    public String getMisionesCompletadas() {
+    public int getMisionesCompletadas() {
         return misionesCompletadas;
     }
 
-    public void setMisionesCompletadas(String misionesCompletadas) {
+    public void setMisionesCompletadas(int misionesCompletadas) {
         this.misionesCompletadas = misionesCompletadas;
     }
 
