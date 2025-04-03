@@ -6,21 +6,21 @@ public class Batallon {
     private String ubicacion;
     private LinkedList<Vehiculo> vehiculos;
     private LinkedList<Mision> misiones;
+    private LinkedList<VehiculoApoyo> listaVehiculoApoyo;
+    private LinkedList<VehiculoBlindado>listaVehiculoBlindado;
+    private LinkedList<VehiculoTransporteTropas> listaVehiculoTransporteTropas;
 
-    public Batallon(String nombre, String fecha, String ubicacion, LinkedList<Mision> misiones, LinkedList<Vehiculo> vehiculos) {
+
+    public Batallon(String nombre, String fecha, String ubicacion) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.ubicacion = ubicacion;
-        this.misiones = misiones;
         this.vehiculos = vehiculos;
-    }
+        this.misiones = misiones;
+        this.listaVehiculoApoyo = listaVehiculoApoyo;
+        this.listaVehiculoBlindado = listaVehiculoBlindado;
+        this.listaVehiculoTransporteTropas = listaVehiculoTransporteTropas;
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getFecha() {
@@ -39,6 +39,14 @@ public class Batallon {
         this.ubicacion = ubicacion;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public LinkedList<Vehiculo> getVehiculos() {
         return vehiculos;
     }
@@ -55,6 +63,30 @@ public class Batallon {
         this.misiones = misiones;
     }
 
+    public LinkedList<VehiculoApoyo> getListaVehiculoApoyo() {
+        return listaVehiculoApoyo;
+    }
+
+    public void setListaVehiculoApoyo(LinkedList<VehiculoApoyo> listaVehiculoApoyo) {
+        this.listaVehiculoApoyo = listaVehiculoApoyo;
+    }
+
+    public LinkedList<VehiculoBlindado> getVehiculoBlindado() {
+        return listaVehiculoBlindado;
+    }
+
+    public void setVehiculoBlindado(LinkedList<VehiculoBlindado> vehiculoBlindado) {
+        this.listaVehiculoBlindado = vehiculoBlindado;
+    }
+
+    public LinkedList<VehiculoTransporteTropas> getVehiculoTransporteTropas() {
+        return listaVehiculoTransporteTropas;
+    }
+
+    public void setVehiculoTransporteTropas(LinkedList<VehiculoTransporteTropas> vehiculoTransporteTropas) {
+        this.listaVehiculoTransporteTropas = vehiculoTransporteTropas;
+    }
+
     @Override
     public String toString() {
         return "Batallon{" +
@@ -63,8 +95,12 @@ public class Batallon {
                 ", ubicacion='" + ubicacion + '\'' +
                 ", vehiculos=" + vehiculos +
                 ", misiones=" + misiones +
+                ", vehiculoApoyo=" + listaVehiculoApoyo +
+                ", vehiculoBlindado=" + listaVehiculoBlindado +
+                ", vehiculoTransporteTropas=" + listaVehiculoTransporteTropas +
                 '}';
     }
+
 
     public void crearVehiculo(Vehiculo vehiculoAgregar) {
         if (!verificarVehiculo(vehiculoAgregar.getId())) {
@@ -171,12 +207,32 @@ public class Batallon {
         }
         return centinela;
     }
+    public LinkedList<Vehiculo> obtenerVehiculos50misiones() {
+        LinkedList<Vehiculo> vehiculosMisionesCompletadas = new LinkedList<>();
+        for (VehiculoApoyo vehiculoapoyo : listaVehiculoApoyo) {
+            if (vehiculoapoyo.getMisionesCompletadas() > 50) {
+                vehiculosMisionesCompletadas.add(vehiculoapoyo);
+            }
+            for (VehiculoBlindado vehiculo: listaVehiculoBlindado){
+                if(vehiculo.getMisionesCompletadas()>50){
+                    vehiculosMisionesCompletadas.add(vehiculo);
+                }
+            }
+
+           for(VehiculoTransporteTropas vehiculo: listaVehiculoTransporteTropas){
+               if(vehiculo.getMisionesCompletadas()>50){
+                   vehiculosMisionesCompletadas.add(vehiculo);
+
+               }
+
+       }
+
+
+
+        }
+
+        return vehiculosMisionesCompletadas;
 }
-public LinkedList<Vehiculo>obtenerVehiculos50misiones(){
-    LinkedList<Vehiculo> vehiculosMisionesCompletadas = new LinkedList<>(){
-    for(VehiculoApoyo vehiculo:listaVehiculoApoyo){
-    }
-    }
 
 }
 

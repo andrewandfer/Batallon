@@ -3,8 +3,8 @@ public class VehiculoApoyo extends Vehiculo {
     private String nombre;
     private TipoFuncion tipoFuncion;
 
-    public VehiculoApoyo(String id, String modelo, String fechafabricacion, String kilometraje, String nombre, TipoFuncion tipoFuncion) {
-        super(id, modelo, fechafabricacion, kilometraje);
+    public VehiculoApoyo(String id, String modelo, String fechafabricacion, String kilometraje, String nombre, TipoFuncion tipoFuncion,EstadoOperativo estadoOperativo,int misionesCompletadas) {
+        super(id, modelo, fechafabricacion, kilometraje,misionesCompletadas,estadoOperativo);
         this.nombre = nombre;
         this.tipoFuncion = tipoFuncion;
     }
@@ -27,8 +27,9 @@ public class VehiculoApoyo extends Vehiculo {
 
     @Override
     public String toString() {
-        return super.toString() +"VehiculoApoyo{" +
+        return "VehiculoApoyo{" +
                 "nombre='" + nombre + '\'' +
+                ", tipoFuncion=" + tipoFuncion +
                 '}';
     }
 }
