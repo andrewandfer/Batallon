@@ -7,7 +7,7 @@ public class Batallon {
     private LinkedList<Vehiculo> vehiculos;
     private LinkedList<Mision> misiones;
     private LinkedList<VehiculoApoyo> listaVehiculoApoyo;
-    private LinkedList<VehiculoBlindado>listaVehiculoBlindado;
+    private LinkedList<VehiculoBlindado> listaVehiculoBlindado;
     private LinkedList<VehiculoTransporteTropas> listaVehiculoTransporteTropas;
 
 
@@ -109,24 +109,23 @@ public class Batallon {
     }*/
 
     public void agregarVehiculo(Vehiculo vehiculoAgregar) {
-        if(buscarVehiculo(vehiculoAgregar.getId()) == null) {
+        if (buscarVehiculo(vehiculoAgregar.getId()) == null) {
             vehiculos.add(vehiculoAgregar);
-        } else{
+        } else {
             System.out.println("Vehiculo ya existe");
         }
     }
 
 
-    public boolean verificarVehiculo(String id){
+    public boolean verificarVehiculo(String id) {
         boolean centinela = false;
-        for(Vehiculo vehiculo : vehiculos){
-            if(vehiculo.getId().equals(id)){
+        for (Vehiculo vehiculo : vehiculos) {
+            if (vehiculo.getId().equals(id)) {
                 centinela = true;
             }
         }
         return centinela;
     }
-
 
 
     public boolean eliminarVehiculo(Vehiculo vehiculoEliminar) {
@@ -162,7 +161,7 @@ public class Batallon {
 
     public Mision buscarMision(String codigomision) {
         for (int i = 0; i < misiones.size(); i++) {
-            if (misiones.get(i).getCodigoMision().equals(codigomision)) {
+            if (misiones.get(i).getId().equals(codigomision)) {
                 return misiones.get(i);
 
             }
@@ -179,18 +178,19 @@ public class Batallon {
         misiones.add(misionAgregar);
         return true;
     }
+
     public boolean eliminarMision(Mision misionEliminar) {
         for (int i = 0; i < misiones.size(); i++) {
             if (misiones.get(i).equals(misionEliminar)) {
                 misiones.remove(i);
             }
         }
-    return true;
+        return true;
     }
 
     public boolean actualizarMision(Mision misionActualizar) {
-        for (int i=0;i<misiones.size();i++) {
-            if(misiones.get(i).equals(misionActualizar)){
+        for (int i = 0; i < misiones.size(); i++) {
+            if (misiones.get(i).equals(misionActualizar)) {
                 misiones.set(i, misionActualizar);
                 return true;
             }
@@ -201,43 +201,93 @@ public class Batallon {
     public boolean verficarMision(String codigoMision) {
         boolean centinela = false;
         for (Mision mision : misiones) {
-            if (mision.getCodigoMision().equals(codigoMision)) {
+            if (mision.getId().equals(codigoMision)) {
                 centinela = true;
             }
         }
         return centinela;
     }
+
     public LinkedList<Vehiculo> obtenerVehiculos50misiones() {
         LinkedList<Vehiculo> vehiculosMisionesCompletadas = new LinkedList<>();
         for (VehiculoApoyo vehiculoapoyo : listaVehiculoApoyo) {
             if (vehiculoapoyo.getMisionesCompletadas() > 50) {
                 vehiculosMisionesCompletadas.add(vehiculoapoyo);
             }
-            for (VehiculoBlindado vehiculo: listaVehiculoBlindado){
-                if(vehiculo.getMisionesCompletadas()>50){
+            for (VehiculoBlindado vehiculo : listaVehiculoBlindado) {
+                if (vehiculo.getMisionesCompletadas() > 50) {
                     vehiculosMisionesCompletadas.add(vehiculo);
                 }
             }
 
-           for(VehiculoTransporteTropas vehiculo: listaVehiculoTransporteTropas){
-               if(vehiculo.getMisionesCompletadas()>50){
-                   vehiculosMisionesCompletadas.add(vehiculo);
+            for (VehiculoTransporteTropas vehiculo : listaVehiculoTransporteTropas) {
+                if (vehiculo.getMisionesCompletadas() > 50) {
+                    vehiculosMisionesCompletadas.add(vehiculo);
 
-               }
+                }
 
-       }
-
-
+            }
 
         }
 
         return vehiculosMisionesCompletadas;
+    }
+
+    public boolean registrarMision(String fechaMision, String ubicacionMision, String idVehiculoMision) {
+        boolean flag = false;
+
+        String cantidadMisionesActuales = String.valueOf(misiones.size() + 1);
+        Mision newMision = new Mision(cantidadMisionesActuales, fechaMision, ubicacionMision);
+        for (Vehiculo vehiculo : vehiculos) {
+            if (vehiculo.getId().equals(idVehiculoMision)) {
+                int misionesCompletadas = vehiculo.getMisionesCompletadas();
+                vehiculo.setMisionesCompletadas(misionesCompletadas + 1);
+            }
+        }
+        return flag;
+    }
+
+    public void calcularPromedioTipo() {
+        int kilometrajeApoyo = 0;
+        int cantidadApoyo= listaVehiculoApoyo.size();
+        for(VehiculoApoyo vehiculoApoyo : listaVehiculoApoyo) {
+            kilometrajeApoyo+=vehiculoApoyo.getKilometraje();
+        }
+        if(cantidadApoyo!=0) {
+            int promedioKilometrajeApoyo= kilometrajeApoyo/listaVehiculoApoyo.size();
+        }
+
+
+        int kilometrajeBlindado = 0;
+        int cantidadBlindado= listaVehiculoBlindado.size();
+        for(VehiculoBlindado vehiculoBlindado: listaVehiculoBlindado) {
+            kilometrajeBlindado += vehiculoBlindado.getKilometraje();
+        }
+        if(cantidadBlindado!=0){
+            int promedioKilometrajeBlindado= kilometrajeBlindado/listaVehiculoBlindado.size();
+        }
+
+
+        int kilometrajeTransporteTropas = 0;
+        int cantidadTransporteTropas= listaVehiculoTransporteTropas.size();
+        for(VehiculoTransporteTropas vehiculoTransporteTropas: listaVehiculoTransporteTropas) {
+            kilometrajeTransporteTropas+= vehiculoTransporteTropas.getKilometraje();
+        }
+        if(cantidadTransporteTropas!=0){
+            int promedioTransporteTropas = kilometrajeTransporteTropas/listaVehiculoTransporteTropas.size();
+        }
+    }
+
+    public Vehiculo vehiculoconmasmisionesCompletadas() {
+        Vehiculo vehiculomasmisiones = vehiculos.get(0);
+        for (int i = 0; i < vehiculos.size(); i++) {
+            if (vehiculos.get(i).getMisionesCompletadas() > vehiculomasmisiones.getMisionesCompletadas()) {
+                vehiculomasmisiones = vehiculos.get(i);
+            }
+        }
+        return vehiculomasmisiones;
+    }
 }
-
-}
-
-
-
 
 
 

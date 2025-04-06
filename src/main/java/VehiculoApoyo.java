@@ -3,8 +3,8 @@ public class VehiculoApoyo extends Vehiculo {
     private String nombre;
     private TipoFuncion tipoFuncion;
 
-    public VehiculoApoyo(String id, String modelo, String fechafabricacion, String kilometraje, String nombre, TipoFuncion tipoFuncion,EstadoOperativo estadoOperativo,int misionesCompletadas) {
-        super(id, modelo, fechafabricacion, kilometraje,misionesCompletadas,estadoOperativo);
+    public VehiculoApoyo(String id, String modelo, String fechafabricacion, String kilometraje, String nombre, TipoFuncion tipoFuncion,EstadoOperativo estadoOperativo) {
+        super(id, modelo, fechafabricacion, kilometraje,estadoOperativo);
         this.nombre = nombre;
         this.tipoFuncion = tipoFuncion;
     }

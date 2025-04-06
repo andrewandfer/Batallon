@@ -3,16 +3,18 @@ import java.util.LinkedList;
 public class Mision {
     private String fecha;
     private String ubicacion;
-    private String personalAsignado;
-    private LinkedList<Vehiculo> vehiculos;
-    private String codigoMision;
+    private LinkedList<String> personalAsignado;
+    private String id;
+    private Vehiculo vehiculo;
 
-    public Mision(String fecha, String ubicacion, String personalAsignado, LinkedList<Vehiculo> vehiculos, String codigoMision) {
+    public Mision(String fecha, String ubicacion, String id) {
         this.fecha = fecha;
         this.ubicacion = ubicacion;
         this.personalAsignado = personalAsignado;
-        this.vehiculos = vehiculos;
-        this.codigoMision = codigoMision;
+        this.vehiculo = vehiculo;
+        this.id = id;
+
+        personalAsignado = new LinkedList<>();
     }
 
     public String getFecha() {
@@ -31,28 +33,28 @@ public class Mision {
         this.ubicacion = ubicacion;
     }
 
-    public String getPersonalAsignado() {
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+
+    public LinkedList<String> getPersonalAsignado() {
         return personalAsignado;
     }
 
-    public void setPersonalAsignado(String personalAsignado) {
+    public void setPersonalAsignado(LinkedList<String> personalAsignado) {
         this.personalAsignado = personalAsignado;
     }
 
-    public LinkedList<Vehiculo> getVehiculos() {
-        return vehiculos;
+    public String getId() {
+        return id;
     }
 
-    public void setVehiculos(LinkedList<Vehiculo> vehiculos) {
-        this.vehiculos = vehiculos;
-    }
-
-    public String getCodigoMision() {
-        return codigoMision;
-    }
-
-    public void setCodigoMision(String codigoMision) {
-        this.codigoMision = codigoMision;
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
@@ -60,9 +62,9 @@ public class Mision {
         return "Mision{" +
                 "fecha='" + fecha + '\'' +
                 ", ubicacion='" + ubicacion + '\'' +
-                ", personalAsignado='" + personalAsignado + '\'' +
-                ", vehiculos=" + vehiculos +
-                ", codigoMision='" + codigoMision + '\'' +
+                ", personalAsignado=" + personalAsignado +
+                ", vehiculo=" + vehiculo +
+                ", codigoMision='" + id + '\'' +
                 '}';
     }
 }

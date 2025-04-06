@@ -3,8 +3,8 @@ public class VehiculoBlindado extends Vehiculo {
     private String nivelBlindaje;
 
 
-    public VehiculoBlindado(String id, String modelo, String fechafabricacion, String kilometraje, String nivelBlindaje, int misionesCompletadas,EstadoOperativo estadoOperativo) {
-        super(id, modelo, fechafabricacion, kilometraje,misionesCompletadas,estadoOperativo);
+    public VehiculoBlindado(String id, String modelo, String fechafabricacion, String kilometraje, String nivelBlindaje,EstadoOperativo estadoOperativo) {
+        super(id, modelo, fechafabricacion, kilometraje,estadoOperativo);
         this.nivelBlindaje = nivelBlindaje;
     }
 
