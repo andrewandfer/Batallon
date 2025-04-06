@@ -8,7 +8,7 @@ public class Main {
         int opcion;
 
 
-        do{
+        do {
             String menu = """
                     MENÚ BATALLON
                     1. Agregar Vehículo
@@ -21,15 +21,14 @@ public class Main {
                     
                     """;
             opcion = Integer.parseInt(JOptionPane.showInputDialog(menu));
-            switch(opcion){
+            switch (opcion) {
                 case 1 -> { // Agregar vehículo
                     String id = JOptionPane.showInputDialog("Ingrese ID del vehículo:");
-                    String modelo= JOptionPane.showInputDialog("Ingrese el modelo del modelo");
+                    String modelo = JOptionPane.showInputDialog("Ingrese el modelo del modelo");
                     String fechafabricacion = JOptionPane.showInputDialog("Ingrese la fecha de fabricacion");
-                    String kilometraje= JOptionPane.showInputDialog("Ingrese el kilometraje");
-                    EstadoOperativo estadoOperativo=JOptionPane.showInputDialog("ingrese el estado operativo del vehiculo");
-
-
+                    String kilometraje = JOptionPane.showInputDialog("Ingrese el kilometraje");
+                    Estado = JOptionPane.showInputDialog("ingrese el estado operativo del vehiculo");
+                    int misionesCompletadas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el misiones completadas"));
 
                     batallon.agregarVehiculo(nuevoVehiculo);
                     JOptionPane.showMessageDialog(null, "Vehículo agregado con éxito");
@@ -48,12 +47,13 @@ public class Main {
 
                     JOptionPane.showMessageDialog(null, "Misión agregada con éxito");
                 }
-
+                case 3 -> {// buscar vehiculo
+                        String id = JOptionPane.showInputDialog("Ingrese ID del vehículo a buscar:");
+                        Vehiculo vehiculo = batallon.buscarVehiculo(id);
+                        JOptionPane.showMessageDialog(null, vehiculo != null vehiculo.toString() : "Vehículo no encontrado.");
+                    }
+                }
             }
-
-
-
-
-
-
-}
+            }
+            }
+        }

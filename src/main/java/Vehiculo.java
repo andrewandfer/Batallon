@@ -3,7 +3,7 @@ public abstract class Vehiculo {
     private String id;
     private String modelo;
     private String fechafabricacion;
-    private String kilometraje;
+    private int kilometraje;
     private EstadoOperativo estadoOperativo;
     private int misionesCompletadas;
 

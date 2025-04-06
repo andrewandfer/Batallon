@@ -2,7 +2,7 @@ import java.util.LinkedList;
 
 public class Batallon {
     private String nombre;
-    private String fecha;
+    private localDate fecha;
     private String ubicacion;
     private LinkedList<Vehiculo> vehiculos;
     private LinkedList<Mision> misiones;
