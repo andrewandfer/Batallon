@@ -3,11 +3,12 @@ public class VehiculoApoyo extends Vehiculo {
     private String nombre;
     private TipoFuncion tipoFuncion;
 
-    public VehiculoApoyo(String id, String modelo, String fechafabricacion, String kilometraje, String nombre, TipoFuncion tipoFuncion,EstadoOperativo estadoOperativo) {
-        super(id, modelo, fechafabricacion, kilometraje,estadoOperativo);
+    public VehiculoApoyo(String id, String modelo, String fechafabricacion, int kilometraje, String nombre, TipoFuncion tipoFuncion, EstadoOperativo estadoOperativo) {
+        super(id, modelo, fechafabricacion, kilometraje, estadoOperativo); // Llama al constructor de Vehiculo (clase padre)
         this.nombre = nombre;
         this.tipoFuncion = tipoFuncion;
     }
+
 
     public String getNombre() {
         return nombre;
@@ -24,6 +25,8 @@ public class VehiculoApoyo extends Vehiculo {
     public void setTipoFuncion(TipoFuncion tipoFuncion) {
         this.tipoFuncion = tipoFuncion;
     }
+
+
 
     @Override
     public String toString() {
