@@ -1,13 +1,14 @@
+import java.time.LocalDate;
 import java.util.LinkedList;
 
 public class Mision {
-    private String fecha;
+    private LocalDate fecha;
     private String ubicacion;
     private LinkedList<String> personalAsignado;
     private String id;
     private Vehiculo vehiculo;
 
-    public Mision(String fecha, String ubicacion, String id) {
+        public Mision(LocalDate fecha, String ubicacion, String id) {
         this.fecha = fecha;
         this.ubicacion = ubicacion;
         this.personalAsignado = personalAsignado;
@@ -17,11 +18,11 @@ public class Mision {
         personalAsignado = new LinkedList<>();
     }
 
-    public String getFecha() {
+        public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 

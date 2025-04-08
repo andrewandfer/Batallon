@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.LinkedList;
 
 public class Batallon {
@@ -11,7 +12,7 @@ public class Batallon {
     private LinkedList<VehiculoTransporteTropas> listaVehiculoTransporteTropas;
 
 
-    public Batallon(String nombre, String fecha, String ubicacion) {
+    public Batallon(String nombre, LocalDate fecha, String ubicacion) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.ubicacion = ubicacion;
@@ -23,11 +24,11 @@ public class Batallon {
 
     }
 
-    public String getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -100,13 +101,6 @@ public class Batallon {
                 ", vehiculoTransporteTropas=" + listaVehiculoTransporteTropas +
                 '}';
     }
-
-
-    /*public void crearVehiculo(Vehiculo vehiculoAgregar) {
-        if (!verificarVehiculo(vehiculoAgregar.getId())) {
-            vehiculos.add(vehiculoAgregar);
-        }
-    }*/
 
     public void agregarVehiculo(Vehiculo vehiculoAgregar) {
         if (buscarVehiculo(vehiculoAgregar.getId()) == null) {
@@ -233,11 +227,11 @@ public class Batallon {
         return vehiculosMisionesCompletadas;
     }
 
-    public boolean registrarMision(String fechaMision, String ubicacionMision, String idVehiculoMision) {
+    public boolean registrarMision(LocalDate fechaMision, String ubicacionMision, String idVehiculoMision) {
         boolean flag = false;
 
         String cantidadMisionesActuales = String.valueOf(misiones.size() + 1);
-        Mision newMision = new Mision(cantidadMisionesActuales, fechaMision, ubicacionMision);
+        Mision newMision = new Mision(fechaMision, idVehiculoMision, ubicacionMision);
         for (Vehiculo vehiculo : vehiculos) {
             if (vehiculo.getId().equals(idVehiculoMision)) {
                 int misionesCompletadas = vehiculo.getMisionesCompletadas();
@@ -249,32 +243,32 @@ public class Batallon {
 
     public void calcularPromedioTipo() {
         int kilometrajeApoyo = 0;
-        int cantidadApoyo= listaVehiculoApoyo.size();
-        for(VehiculoApoyo vehiculoApoyo : listaVehiculoApoyo) {
-            kilometrajeApoyo+=vehiculoApoyo.getKilometraje();
+        int cantidadApoyo = listaVehiculoApoyo.size();
+        for (VehiculoApoyo vehiculoApoyo : listaVehiculoApoyo) {
+            kilometrajeApoyo += vehiculoApoyo.getKilometraje();
         }
-        if(cantidadApoyo!=0) {
-            int promedioKilometrajeApoyo= kilometrajeApoyo/listaVehiculoApoyo.size();
+        if (cantidadApoyo != 0) {
+            int promedioKilometrajeApoyo = kilometrajeApoyo / listaVehiculoApoyo.size();
         }
 
 
         int kilometrajeBlindado = 0;
-        int cantidadBlindado= listaVehiculoBlindado.size();
-        for(VehiculoBlindado vehiculoBlindado: listaVehiculoBlindado) {
+        int cantidadBlindado = listaVehiculoBlindado.size();
+        for (VehiculoBlindado vehiculoBlindado : listaVehiculoBlindado) {
             kilometrajeBlindado += vehiculoBlindado.getKilometraje();
         }
-        if(cantidadBlindado!=0){
-            int promedioKilometrajeBlindado= kilometrajeBlindado/listaVehiculoBlindado.size();
+        if (cantidadBlindado != 0) {
+            int promedioKilometrajeBlindado = kilometrajeBlindado / listaVehiculoBlindado.size();
         }
 
 
         int kilometrajeTransporteTropas = 0;
-        int cantidadTransporteTropas= listaVehiculoTransporteTropas.size();
-        for(VehiculoTransporteTropas vehiculoTransporteTropas: listaVehiculoTransporteTropas) {
-            kilometrajeTransporteTropas+= vehiculoTransporteTropas.getKilometraje();
+        int cantidadTransporteTropas = listaVehiculoTransporteTropas.size();
+        for (VehiculoTransporteTropas vehiculoTransporteTropas : listaVehiculoTransporteTropas) {
+            kilometrajeTransporteTropas += vehiculoTransporteTropas.getKilometraje();
         }
-        if(cantidadTransporteTropas!=0){
-            int promedioTransporteTropas = kilometrajeTransporteTropas/listaVehiculoTransporteTropas.size();
+        if (cantidadTransporteTropas != 0) {
+            int promedioTransporteTropas = kilometrajeTransporteTropas / listaVehiculoTransporteTropas.size();
         }
     }
 
@@ -286,6 +280,16 @@ public class Batallon {
             }
         }
         return vehiculomasmisiones;
+    }
+
+    public LinkedList<Mision> buscarMisionesPorFechaYUbicacion(LocalDate fechaBuscada, String ubicacionBuscada) {
+        LinkedList<Mision> misionesEncontradas = new LinkedList<>();
+        for(Mision mision:misiones) {
+            if(mision.getFecha().equals(fechaBuscada)&&mision.getUbicacion().equals(ubicacionBuscada)) {
+                misionesEncontradas.add(mision);
+            }
+        }
+    return misionesEncontradas;
     }
 }
 
