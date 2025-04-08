@@ -272,6 +272,7 @@ public class Batallon {
         }
     }
 
+
     public Vehiculo vehiculoconmasmisionesCompletadas() {
         Vehiculo vehiculomasmisiones = vehiculos.get(0);
         for (int i = 0; i < vehiculos.size(); i++) {
